@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Spinner = () => {
+const LoadingSpinner = () => {
     return (
         <div className="flex items-center justify-center">
             <div className="relative h-6 w-6">
@@ -14,4 +14,4 @@ const Spinner = () => {
     );
 };
 
-export default Spinner;
+export default LoadingSpinner;
