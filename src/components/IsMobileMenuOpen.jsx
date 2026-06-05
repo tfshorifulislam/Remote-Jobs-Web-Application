@@ -7,14 +7,16 @@ const IsMobileMenuOpen = ( { user, userInitial, navItems, handleSignOut, setIsMo
         <>
             <div className="flex items-center gap-3 px-2 py-2 mb-2 bg-gray-50 rounded-xl">
                 {user.image ? (
-                    <img src={user.image} alt="User" className="h-10 w-10 rounded-full object-cover" />
+                    <img src={user.image}
+                    alt="User"
+                    className="h-10 w-10 rounded-full object-cover" />
                 ) : (
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-bold text-base">
+                    <div className="h-10 w-10 rounded-full bg-linear-to-tr from-[#0A65CC] to-indigo-500 text-white flex items-center justify-center font-bold text-base">
                         {userInitial}
                     </div>
                 )}
                 <div className="truncate">
-                    <p className="font-semibold text-sm text-gray-900 truncate">{user.name || 'User'}</p>
+                    <p className="font-semibold text-sm text-gray-900 truncate">{user.name }</p>
                     <p className="text-xs text-gray-500 truncate">{user.email}</p>
                 </div>
             </div>

@@ -79,7 +79,7 @@ const Navbar = () => {
                     <div className="hidden sm:block">
                       <Link
                         href="/authentication/signin"
-                        className="bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl hover:opacity-95 transition shadow-sm font-semibold text-sm shadow-blue-100"
+                        className="bg-linear-to-r from-[#0A65CC] to-indigo-600 text-white px-5 py-2.5 rounded-xl hover:opacity-95 transition shadow-sm font-semibold text-sm shadow-blue-100"
                       >
                         Sign In
                       </Link>
@@ -130,7 +130,7 @@ const Navbar = () => {
                     <Link
                       href="/authentication/signin"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-center px-4 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold text-sm shadow-sm active:scale-[0.98] transition-transform"
+                      className="block text-center px-4 py-2.5 bg-linear-to-r from-[#0A65CC] to-indigo-600 text-white rounded-xl font-semibold text-sm shadow-sm active:scale-[0.98] transition-transform"
                     >
                       Sign In
                     </Link>
