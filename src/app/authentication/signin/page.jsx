@@ -92,7 +92,7 @@ export default function SignInPage() {
                     </div>
 
                     {/* Remember me & Forgot password */}
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:items-center sm:justify-between text-sm">
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input
                                 type="checkbox"
@@ -100,7 +100,7 @@ export default function SignInPage() {
                             />
                             <span className="text-zinc-600 dark:text-zinc-400">Remember me</span>
                         </label>
-                        <Link href="/auth/forgot-password" className="text-primary text-sm hover:underline">
+                        <Link href="/authentication/forgot-password" className="text-primary text-sm hover:underline">
                             Forgot password?
                         </Link>
                     </div>
