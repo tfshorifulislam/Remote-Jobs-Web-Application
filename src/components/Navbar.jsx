@@ -44,13 +44,6 @@ const Navbar = () => {
     };
   }, [isProfileDropdownOpen]);
 
-  if (isPending) {
-    return (
-      <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 h-16 flex items-center justify-center border-b border-gray-100">
-        <LoadingSpinner />
-      </nav>
-    );
-  }
 
   const userInitial = user?.image ? user.image : user?.name?.charAt(0).toUpperCase();
 
@@ -67,29 +60,33 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <Logo />
           <div className="flex items-center gap-6">
-            {user ? (
-              <DesktopNavItems
-                navItems={navItems}
-                pathname={pathname}
-                user={user}
-                userInitial={userInitial}
-                isProfileDropdownOpen={isProfileDropdownOpen}
-                toggleProfileDropdown={toggleProfileDropdown}
-                dropdownRef={dropdownRef}
-                handleSignOut={handleSignOut}
-              />
-            ) : (
-              <div className="hidden sm:block">
-                <Link
-                  href="/authentication/signin"
-                  className="bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl hover:opacity-95 transition shadow-sm font-semibold text-sm shadow-blue-100"
-                >
-                  Sign In
-                </Link>
-              </div>
-            )}
+            {
+              isPending ? (
+                <div
+                  className="hidden sm:block h-9 w-20 bg-gray-100 animate-pulse rounded-xl" />)
+                : user ? (
+                  <DesktopNavItems
+                    navItems={navItems}
+                    pathname={pathname}
+                    user={user}
+                    userInitial={userInitial}
+                    isProfileDropdownOpen={isProfileDropdownOpen}
+                    toggleProfileDropdown={toggleProfileDropdown}
+                    dropdownRef={dropdownRef}
+                    handleSignOut={handleSignOut}
+                  />)
+                  : (
+                    <div className="hidden sm:block">
+                      <Link
+                        href="/authentication/signin"
+                        className="bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 rounded-xl hover:opacity-95 transition shadow-sm font-semibold text-sm shadow-blue-100"
+                      >
+                        Sign In
+                      </Link>
+                    </div>
+                  )}
 
-            
+
             <button
               onClick={toggleMobileMenu}
               className="sm:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-50 focus:outline-none transition-colors w-9 h-9 flex flex-col justify-center items-center gap-1.5"
@@ -114,28 +111,31 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="sm:hidden py-4 border-t border-gray-100 animate-fadeIn">
             <div className="flex flex-col space-y-3">
-              {user ? (
-                <IsMobileMenuOpen
-                  user={user}
-                  navItems={navItems}
-                  userInitial={userInitial}
-                  handleSignOut={handleSignOut}
-                  closeMenu={() => setIsMobileMenuOpen(false)}
-                />
-              ) : (
-                <div className="px-2 py-1 text-center">
-                  <p className="text-sm text-gray-500 mb-3 font-medium">
-                    You are not signed in.
-                  </p>
-                  <Link
-                    href="/authentication/signin"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-center px-4 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold text-sm shadow-sm active:scale-[0.98] transition-transform"
-                  >
-                    Sign In
-                  </Link>
-                </div>
-              )}
+              {isPending ? (
+                <div
+                  className="hidden sm:block h-9 w-20 bg-gray-100 animate-pulse rounded-xl" />)
+                : user ? (
+                  <IsMobileMenuOpen
+                    user={user}
+                    navItems={navItems}
+                    userInitial={userInitial}
+                    handleSignOut={handleSignOut}
+                    closeMenu={() => setIsMobileMenuOpen(false)}
+                  />
+                ) : (
+                  <div className="px-2 py-1 text-center">
+                    <p className="text-sm text-gray-500 mb-3 font-medium">
+                      You are not signed in.
+                    </p>
+                    <Link
+                      href="/authentication/signin"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-center px-4 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold text-sm shadow-sm active:scale-[0.98] transition-transform"
+                    >
+                      Sign In
+                    </Link>
+                  </div>
+                )}
             </div>
           </div>
         )}
