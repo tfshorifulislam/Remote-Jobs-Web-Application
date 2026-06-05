@@ -31,7 +31,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <button
               onClick={handleSignIn}
-              className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200 font-medium"
+              className="flex cursor-pointer items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200 font-medium"
             >
               <FaSignInAlt className="text-sm" />
               Sign In
@@ -55,7 +55,7 @@ const Navbar = () => {
             <div className="flex flex-col space-y-3">
               <button
                 onClick={handleSignIn}
-                className="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full"
+                className="flex cursor-pointer items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full"
               >
                 <FaSignInAlt className="text-sm" />
                 Sign In
