@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingSpinner = () => {
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center h-screen">
             <div className="relative h-6 w-6">
               
                 <div className="absolute inset-0 rounded-full border-[2.5px] border-zinc-200 dark:border-zinc-800" />

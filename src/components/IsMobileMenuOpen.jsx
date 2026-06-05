@@ -2,19 +2,42 @@ import React from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import Link from 'next/link';
 
-const IsMobileMenuOpen = () => {
+const IsMobileMenuOpen = ( { user, userInitial, navItems, handleSignOut, setIsMobileMenuOpen } ) => {
     return (
-        <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-3">
-                <Link
-                    href="/authentication/signin"
-                    className="flex cursor-pointer items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full"
-                >
-                    <FaSignInAlt className="text-sm" />
-                    Sign In
-                </Link>
+        <>
+            <div className="flex items-center gap-3 px-2 py-2 mb-2 bg-gray-50 rounded-xl">
+                {user.image ? (
+                    <img src={user.image} alt="User" className="h-10 w-10 rounded-full object-cover" />
+                ) : (
+                    <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-bold text-base">
+                        {userInitial}
+                    </div>
+                )}
+                <div className="truncate">
+                    <p className="font-semibold text-sm text-gray-900 truncate">{user.name || 'User'}</p>
+                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                </div>
             </div>
-        </div>
+
+            {navItems.map((item) => (
+                <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium"
+                >
+                    {item.name}
+                </Link>
+            ))}
+            <hr className="my-1 border-gray-100" />
+
+            <button
+                onClick={handleSignOut}
+                className="block px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg w-full text-left transition"
+            >
+                Sign Out
+            </button>
+        </>
     );
 };
 
