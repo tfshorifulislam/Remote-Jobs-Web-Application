@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Card, Button, Link } from "@heroui/react";
 import { At, ShieldKeyhole, Eye, EyeSlash } from "@gravity-ui/icons";
+import { signIn } from "@/lib/auth-client";
 
 export default function SignInPage() {
     const [email, setEmail] = useState("");
@@ -19,8 +20,19 @@ export default function SignInPage() {
         setIsLoading(true);
 
         try {
-            // Replace this with your actual sign-in logic
-            // Example: await signIn.email({ email, password, callbackURL: "/" });
+            const { data, error: authError } = await signIn.email({
+                email,
+                password,
+            });
+
+            if (authError) {
+                setError(authError.message || "Something went wrong during sign in.");
+            } else {
+                setSuccess("Signed in successfully! Welcome.");
+                setEmail("");
+                setPassword("");
+            }
+
             console.log("Sign in with:", { email, password });
 
             // Simulate API call

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, Button, Link } from "@heroui/react";
 import { Eye, EyeSlash, Person, At, ShieldKeyhole } from "@gravity-ui/icons";
 import { signUp } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 export default function SignupPage() {
     const [name, setName] = useState("");
