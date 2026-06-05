@@ -144,7 +144,7 @@ export default function SignupPage() {
           {/* Role Selection - plain radio */}
           <div className="flex flex-col gap-2">
             <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Join as a</label>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <label className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex-1 cursor-pointer has-[:checked]:border-primary">
                 <input
                   type="radio"
