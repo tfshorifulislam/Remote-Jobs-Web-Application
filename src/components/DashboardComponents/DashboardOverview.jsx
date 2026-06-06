@@ -99,7 +99,7 @@ const DashboardOverview = () => {
     ];
 
     return (
-     
+
         <div className="p-4 sm:p-6 md:p-8 w-full min-h-screen ">
 
             {/* HEADER */}
@@ -134,13 +134,13 @@ const DashboardOverview = () => {
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                     
+
                         className="bg-[#1B1B1C] border border-zinc-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300"
                     >
 
                         {/* TOP */}
                         <div className="flex items-center justify-between">
-                           
+
                             <div className="w-10 h-10 rounded-xl bg-[#E2E2E2]/10 flex items-center justify-center text-[#FFFFFF]">
                                 <stat.icon className="w-5 h-5" />
                             </div>
@@ -163,11 +163,11 @@ const DashboardOverview = () => {
 
                         {/* TEXT */}
                         <div className="mt-3">
-                          
+
                             <p className="text-xs text-[#C4C7C8] uppercase tracking-wider">
                                 {stat.title}
                             </p>
-                         
+
                             <h2 className="text-2xl font-bold text-[#E5E2E3]">
                                 {stat.value}
                             </h2>
@@ -198,7 +198,7 @@ const DashboardOverview = () => {
                                         </linearGradient>
                                     </defs>
 
-                                    <Tooltip 
+                                    <Tooltip
                                         contentStyle={{ backgroundColor: '#1B1B1C', borderColor: '#zinc-800', borderRadius: '8px' }}
                                         labelStyle={{ color: '#C4C7C8' }}
                                         itemStyle={{ color: '#E5E2E3' }}
@@ -220,10 +220,14 @@ const DashboardOverview = () => {
                 ))}
             </div>
 
-        
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                <JobPostsByCategory />
-                <NewUser />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+                <div className="col-span-2">
+                    <JobPostsByCategory />
+                </div>
+                <div className="col-span-1">
+                    <NewUser />
+                </div>
             </div>
             <div className="mt-8">
                 <SubscriptionTransactions />
