@@ -41,7 +41,7 @@ export function DashboardSidebar() {
         <div className="flex h-full flex-col">
             {/* User Card */}
             <div
-                className="mb-8 rounded-3xl  bg-[#474746] p-4 shadow-sm">
+                className="mb-8 rounded-3xl  bg-[#1B1B1C] p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-lg font-bold text-[#0B0B14]">
                         {isPending ? "..." : userInitial}
@@ -97,7 +97,7 @@ export function DashboardSidebar() {
             {/* Pro Card */}
             <div
                 className="mt-auto pt-6">
-                <div className="rounded-3xl bg-[#474746] p-5 text-white shadow">
+                <div className="rounded-3xl bg-[#1B1B1C] p-5 text-white shadow">
                     <div className="flex items-center gap-3">
                         <div className="h-11 w-11 rounded-2xl bg-white/20 flex items-center justify-center">
                             <Briefcase className="size-5" />
@@ -118,7 +118,7 @@ export function DashboardSidebar() {
     return (
         <>
             <aside
-                className="hidden lg:flex h-screen w-72 shrink-0 border-r border-zinc-200 bg-[#0B0B14] p-5 flex-col">
+                className="hidden lg:flex h-screen w-70 shrink-0  bg-[#0B0B14] p-5 flex-col">
                 {navContent}
             </aside>
         </>
