@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
   
   return (
     <html
-      data-theme="light"
+      data-theme="dark"
       lang="en"
       className={`${inter.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col ">
         {children}
       </body>
     </html>
