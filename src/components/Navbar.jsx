@@ -3,12 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
-import { useSession, signOut } from '@/lib/auth-client';
-import LoadingSpinner from './Spinner';
+import {  signOut, useSession } from '@/lib/auth-client';
 import Logo from './Logo';
 import DesktopNavItems from './DesktopNavItems';
 import IsMobileMenuOpen from './IsMobileMenuOpen';
-import GetLoginUser from '@/lib/utility/GetLoginUser';
+
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,9 +17,8 @@ const Navbar = () => {
 
   const dropdownRef = useRef(null);
 
-  const userData = GetLoginUser();
-  const user = userData?.session?.user;
-  const isPending = userData?.isPending;
+  const {data:session, isPending} = useSession()
+  const user = session?.user;
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const toggleProfileDropdown = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
