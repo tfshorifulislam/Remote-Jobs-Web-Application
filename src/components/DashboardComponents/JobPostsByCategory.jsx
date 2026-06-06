@@ -14,15 +14,16 @@ const categoryData = [
   { name: "Engineering", posts: 95 },
   { name: "Design", posts: 65 },
   { name: "Marketing", posts: 48 },
+  { name: "Programming", posts: 90 },
   { name: "Sales", posts: 78 },
   { name: "Operations", posts: 32 },
 ];
 
 const JobPostsByCategory = () => {
   const [mounted, setMounted] = useState(false);
-  const [chartWidth, setChartWidth] = useState(950);
+  const [chartWidth, setChartWidth] = useState(750);
 
-  // উইন্ডো সাইজ ট্র্যাক করে চার্টের উইডথ ডাইনামিক করার জন্য (ResponsiveContainer এর বিকল্প)
+  
   useEffect(() => {
     setMounted(true);
     const handleResize = () => {
