@@ -309,7 +309,8 @@ const PostJobForm = () => {
                 {/* Action Buttons */}
                 <button
                     type="submit"
-                    className="px-7 py-3 rounded-xl bg-linear-to-r from-indigo-600 to-violet-600 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-700 shadow-md shadow-indigo-600/10 transition active:scale-[0.99] cursor-pointer">
+                    className="px-7 py-3 rounded-xl bg-[#0A65CC] text-white font-bold text-sm hover:bg-[#0957b0] shadow-md shadow-[#0A65CC]/20 transition active:scale-[0.99] cursor-pointer"
+                >
                     Publish Job Listing
                 </button>
             </form>
@@ -317,4 +318,4 @@ const PostJobForm = () => {
     );
 };
 
-export default PostJobForm;
+export default PostJobForm; 
