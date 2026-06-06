@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FiSearch, FiBell, FiHelpCircle, FiUser, FiLogOut, FiLayout } from 'react-icons/fi';
 import { signOut, useSession } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
+import { Bell, Briefcase, Envelope, Gear, House, Magnifier, Person } from '@gravity-ui/icons';
 
 const DashboardNavBar = () => {
 
@@ -30,6 +31,19 @@ const DashboardNavBar = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+
+    const navItems = [
+        { icon: House, href: "/dashboard/recruiter", label: "Dashboard" },
+        { icon: Magnifier, href: "/dashboard/recruiter/jobs", label: "Jobs" },
+        { icon: Bell, href: "/dashboard/recruiter/jobs/new", label: "Post a Job" },
+        { icon: Briefcase, href: "/dashboard/recruiter/company", label: "Company" },
+        { icon: Envelope, href: "/messages", label: "Messages" },
+        { icon: Person, href: "/profile", label: "Profile" },
+        { icon: Gear, href: "/settings", label: "Settings" },
+    ];
+
+
 
     return (
         <header className="w-full h-16 bg-white border-b border-gray-100 sticky top-0 z-50 px-4 sm:px-6 flex items-center justify-between">
@@ -85,24 +99,19 @@ const DashboardNavBar = () => {
                             </div>
 
 
-                            <div className="p-1">
-                                <Link
-                                    href="/profile"
-                                    onClick={() => setIsProfileDropdownOpen(false)}
-                                    className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition font-medium"
-                                >
-                                    <FiUser className="w-4 h-4 text-gray-400" />
-                                    My Profile
-                                </Link>
-                                <Link
-                                    href="/dashboard"
-                                    onClick={() => setIsProfileDropdownOpen(false)}
-                                    className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition font-medium"
-                                >
-                                    <FiLayout className="w-4 h-4 text-gray-400" />
-                                    Dashboard
-                                </Link>
-                            </div>
+                            {navItems.map((item) => {
+                                const Icon = item.icon
+                                return (
+                                    <Link
+                                        key={item.label}
+                                        href={item.href}
+                                        className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-xl"
+                                    >
+                                        <Icon className="w-4 h-4 text-[#0A65CC]" />
+                                        <span>{item.label}</span>
+                                    </Link>
+                                );
+                            })}
 
                             <div className="border-t border-gray-100 my-1" />
 
