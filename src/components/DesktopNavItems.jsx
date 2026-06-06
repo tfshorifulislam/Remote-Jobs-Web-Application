@@ -50,7 +50,7 @@ const DesktopNavItems = ({ navItems, pathname, user, userInitial, isProfileDropd
                         <Link href="/profile" onClick={() => setIsProfileDropdownOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">
                             Profile
                         </Link>
-                        <Link href="/dashboard" onClick={() => setIsProfileDropdownOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">
+                        <Link href="/dashboard/recruiter" onClick={() => setIsProfileDropdownOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">
                             Dashboard
                         </Link>
                         <hr className="my-1.5 border-gray-100" />
