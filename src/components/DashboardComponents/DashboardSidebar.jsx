@@ -31,7 +31,7 @@ export function DashboardSidebar() {
         { icon: Gear, href: "/settings", label: "Settings" },
     ];
 
-    
+
 
     const isActive = (href) => {
         return pathname === href;
@@ -40,7 +40,8 @@ export function DashboardSidebar() {
     const navContent = (
         <div className="flex h-full flex-col">
             {/* User Card */}
-            <div className="mb-8 rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
+            <div
+                className="mb-8 rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A65CC] text-lg font-bold text-white">
                         {isPending ? "..." : userInitial}
@@ -59,13 +60,15 @@ export function DashboardSidebar() {
                 </div>
             </div>
 
-            <div className="mb-3 px-3">
+            <div
+                className="mb-3 px-3">
                 <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                     MENU
                 </p>
             </div>
 
-            <nav className="space-y-1 flex-1">
+            <nav
+                className="space-y-1 flex-1">
                 {navItems.map((item) => {
                     const active = isActive(item.href);
                     const Icon = item.icon;
@@ -93,7 +96,8 @@ export function DashboardSidebar() {
             </nav>
 
             {/* Pro Card */}
-            <div className="mt-auto pt-6">
+            <div
+                className="mt-auto pt-6">
                 <div className="rounded-3xl bg-gradient-to-br from-[#0A65CC] to-[#084EA3] p-5 text-white shadow">
                     <div className="flex items-center gap-3">
                         <div className="h-11 w-11 rounded-2xl bg-white/20 flex items-center justify-center">
@@ -114,11 +118,10 @@ export function DashboardSidebar() {
 
     return (
         <>
-            <aside className="hidden lg:flex h-screen w-72 shrink-0 border-r border-zinc-200 bg-[#F8FAFC] p-5 flex-col">
+            <aside
+                className="hidden lg:flex h-screen w-72 shrink-0 border-r border-zinc-200 bg-[#F8FAFC] p-5 flex-col">
                 {navContent}
             </aside>
-
-            {/* <AsidebarDrawer navContent={navContent} /> */}
         </>
     );
 }
