@@ -83,7 +83,7 @@ export function DashboardSidebar() {
                             href={item.href}
                             aria-current={active ? "page" : undefined}
                             className={[
-                                "group relative flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200",
+                                "group relative flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200",
                                 active
                                     ? "bg-[#0A65CC]/10 text-[#0A65CC]"
                                     : "text-zinc-600 hover:bg-white hover:text-zinc-900 hover:translate-x-1",
@@ -91,7 +91,7 @@ export function DashboardSidebar() {
                         >
                             {/* Active indicator */}
                             {active && (
-                                <span className="absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full bg-[#0A65CC]" />
+                                <span className="absolute right-0 top-1/2 h-full w-1 -translate-y-1/2 rounded-r-full bg-[#0A65CC]" />
                             )}
 
                             <Icon
