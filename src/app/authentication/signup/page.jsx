@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Card, Button, Link } from "@heroui/react";
 import { Eye, EyeSlash, Person, At, ShieldKeyhole } from "@gravity-ui/icons";
 import { signUp } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
+    const router = useRouter();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -51,39 +52,44 @@ export default function SignupPage() {
                 setEmail("");
                 setPassword("");
                 setConfirmPassword("");
+                
+                // Redirect user on successful auth
+                router.push("/");
             }
         } catch (err) {
             setError("An unexpected network error occurred.");
         } finally {
             setIsLoading(false);
-            redirect('/')
         }
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 py-12">
-            <Card className="w-full max-w-lg p-8 shadow-xl border border-zinc-200/60 dark:border-zinc-800/60 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md rounded-2xl">
-                <div className="flex flex-col items-center justify-center gap-2 pb-6 border-b border-zinc-100 dark:border-zinc-800/80 mb-6 text-center">
-                    <h1 className="text-3xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50">
+        <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-12">
+            <Card className="w-full max-w-lg p-8 border border-zinc-800 bg-[#1B1B1C] shadow-2xl rounded-2xl">
+                
+                {/* Header */}
+                <div className="flex flex-col items-center justify-center gap-2 pb-6 border-b border-zinc-800 mb-6 text-center">
+                    <h1 className="text-3xl font-bold tracking-tight text-zinc-200">
                         Create an account
                     </h1>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                        Join <span className="font-semibold text-primary">Remote</span> today and start your journey
+                    <p className="text-sm text-zinc-500">
+                        Join <span className="font-semibold text-zinc-300">Remote</span> today and start your journey
                     </p>
                 </div>
 
                 <form onSubmit={handleSignup} className="flex flex-col gap-5">
+                    
                     {/* Full Name */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Full Name</label>
-                        <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 bg-zinc-50 dark:bg-zinc-900/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
-                            <Person className="text-zinc-400" size={16} />
+                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Full Name</label>
+                        <div className="flex items-center gap-2 border border-zinc-800 rounded-xl px-3 bg-zinc-900/50 focus-within:border-zinc-700 transition-all">
+                            <Person className="text-zinc-500" size={16} />
                             <input
                                 type="text"
                                 placeholder="John Doe"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-900 dark:text-zinc-100"
+                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-200 placeholder:text-zinc-600"
                                 required
                             />
                         </div>
@@ -91,15 +97,15 @@ export default function SignupPage() {
 
                     {/* Email */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Email Address</label>
-                        <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 bg-zinc-50 dark:bg-zinc-900/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
-                            <At className="text-zinc-400" size={16} />
+                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Email Address</label>
+                        <div className="flex items-center gap-2 border border-zinc-800 rounded-xl px-3 bg-zinc-900/50 focus-within:border-zinc-700 transition-all">
+                            <At className="text-zinc-500" size={16} />
                             <input
                                 type="email"
                                 placeholder="john@example.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-900 dark:text-zinc-100"
+                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-200 placeholder:text-zinc-600"
                                 required
                             />
                         </div>
@@ -107,18 +113,18 @@ export default function SignupPage() {
 
                     {/* Password */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Password</label>
-                        <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 bg-zinc-50 dark:bg-zinc-900/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
-                            <ShieldKeyhole className="text-zinc-400" size={16} />
+                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Password</label>
+                        <div className="flex items-center gap-2 border border-zinc-800 rounded-xl px-3 bg-zinc-900/50 focus-within:border-zinc-700 transition-all">
+                            <ShieldKeyhole className="text-zinc-500" size={16} />
                             <input
                                 type={isVisible ? "text" : "password"}
                                 placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-900 dark:text-zinc-100"
+                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-200 placeholder:text-zinc-600"
                                 required
                             />
-                            <button type="button" onClick={toggleVisibility} className="text-zinc-400 hover:text-zinc-600">
+                            <button type="button" onClick={toggleVisibility} className="text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors">
                                 {isVisible ? <EyeSlash size={18} /> : <Eye size={18} />}
                             </button>
                         </div>
@@ -126,77 +132,78 @@ export default function SignupPage() {
 
                     {/* Confirm Password */}
                     <div className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Confirm Password</label>
-                        <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 bg-zinc-50 dark:bg-zinc-900/50 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
-                            <ShieldKeyhole className="text-zinc-400" size={16} />
+                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Confirm Password</label>
+                        <div className="flex items-center gap-2 border border-zinc-800 rounded-xl px-3 bg-zinc-900/50 focus-within:border-zinc-700 transition-all">
+                            <ShieldKeyhole className="text-zinc-500" size={16} />
                             <input
                                 type={isConfirmVisible ? "text" : "password"}
                                 placeholder="••••••••"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-900 dark:text-zinc-100"
+                                className="w-full bg-transparent py-2.5 text-sm outline-none text-zinc-200 placeholder:text-zinc-600"
                                 required
                             />
-                            <button type="button" onClick={toggleConfirmVisibility} className="text-zinc-400 hover:text-zinc-600">
+                            <button type="button" onClick={toggleConfirmVisibility} className="text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors">
                                 {isConfirmVisible ? <EyeSlash size={18} /> : <Eye size={18} />}
                             </button>
                         </div>
                     </div>
 
-                    {/* Role Selection - plain radio */}
+                    {/* Role Selection */}
                     <div className="flex flex-col gap-2">
-                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Join as a</label>
+                        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Join as a</label>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <label className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex-1 cursor-pointer has-[:checked]:border-primary">
+                            <label className="flex items-center gap-2 border border-zinc-800 bg-zinc-900/20 has-[:checked]:border-zinc-600 has-[:checked]:bg-zinc-900/60 rounded-xl p-3 flex-1 cursor-pointer transition-all select-none">
                                 <input
                                     type="radio"
                                     name="role"
                                     value="seeker"
                                     checked={role === "seeker"}
                                     onChange={(e) => setRole(e.target.value)}
-                                    className="w-4 h-4 text-primary"
+                                    className="w-4 h-4 accent-zinc-500 bg-zinc-900 border-zinc-800 text-zinc-700 focus:ring-0 cursor-pointer"
                                 />
-                                <span>Job Seeker</span>
+                                <span className="text-sm font-medium text-zinc-300">Job Seeker</span>
                             </label>
-                            <label className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 flex-1 cursor-pointer has-[:checked]:border-primary">
+                            <label className="flex items-center gap-2 border border-zinc-800 bg-zinc-900/20 has-[:checked]:border-zinc-600 has-[:checked]:bg-zinc-900/60 rounded-xl p-3 flex-1 cursor-pointer transition-all select-none">
                                 <input
                                     type="radio"
                                     name="role"
                                     value="recruiter"
                                     checked={role === "recruiter"}
                                     onChange={(e) => setRole(e.target.value)}
-                                    className="w-4 h-4 text-primary"
+                                    className="w-4 h-4 accent-zinc-500 bg-zinc-900 border-zinc-800 text-zinc-700 focus:ring-0 cursor-pointer"
                                 />
-                                <span>Recruiter</span>
+                                <span className="text-sm font-medium text-zinc-300">Recruiter</span>
                             </label>
                         </div>
                     </div>
 
-                    {/* Error & Success */}
+                    {/* Alerts */}
                     {error && (
-                        <div className="p-3 text-xs font-medium rounded-xl bg-danger-50 dark:bg-danger-950/30 text-danger border border-danger-200">
+                        <div className="p-3 text-xs font-medium rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
                             <span className="font-bold">Error:</span> {error}
                         </div>
                     )}
                     {success && (
-                        <div className="p-3 text-xs font-medium rounded-xl bg-success-50 dark:bg-success-950/30 text-success border border-success-200">
+                        <div className="p-3 text-xs font-medium rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                             <span className="font-bold">Success:</span> {success}
                         </div>
                     )}
 
+                    {/* Submit Button */}
                     <Button
                         type="submit"
-                        color="primary"
-                        className="w-full font-bold rounded-xl text-sm h-12 shadow-lg shadow-primary/20"
+                        className="w-full font-semibold rounded-xl text-sm h-12 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 transition-all active:scale-[0.99] cursor-pointer"
                         isLoading={isLoading}
                         isDisabled={isLoading}
                     >
                         Create Account
                     </Button>
 
-                    <div className="text-center pt-4 border-t border-zinc-100 dark:border-zinc-800/80 text-sm text-zinc-500">
+                    {/* Footer link */}
+                    <div className="text-center pt-4 border-t border-zinc-800 text-sm text-zinc-500">
                         Already have an account?{" "}
-                        <Link href="/authentication/signin" className="font-semibold text-primary hover:underline">
+                        <Link href="/authentication/signin" className="font-medium text-zinc-400 hover:text-zinc-200 hover:underline transition-colors">
                             Sign in instead
                         </Link>
                     </div>
