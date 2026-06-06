@@ -3,7 +3,7 @@ import React from 'react';
 
 const DashboardLayout = ({ children }) => {
     return (
-        <div className="min-h-screen bg-[#131314]">
+        <div className="min-h-screen bg-[#101011]">
 
             {/* Sidebar */}
             <div className="

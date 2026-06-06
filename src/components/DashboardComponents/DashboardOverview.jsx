@@ -99,28 +99,28 @@ const DashboardOverview = () => {
     ];
 
     return (
-        <div className="p-4 sm:p-6  md:p-8 w-full bg-gray-50/30">
+     
+        <div className="p-4 sm:p-6 md:p-8 w-full min-h-screen ">
 
             {/* HEADER */}
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b pb-6 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-zinc-800 pb-6 mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-3xl font-bold text-[#E5E2E3]">
                         Dashboard Overview
                     </h1>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#C4C7C8]">
                         Real-time analytics & platform growth
                     </p>
                 </div>
 
                 <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-4 py-2.5 bg-white border rounded-xl text-sm font-semibold text-gray-700">
+                    <button className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-sm font-semibold text-[#C4C7C8] hover:bg-zinc-700 transition">
                         <FiCalendar />
                         Last 30 Days
                     </button>
 
                     <button
-                        className="flex items-center gap-2 px-4 py-2.5 text-white rounded-xl text-sm font-semibold"
-                        style={{ backgroundColor: "#0A65CC" }}
+                        className="flex items-center gap-2 px-4 py-2.5 bg-[#E5E2E3] text-[#1B1B1C] rounded-xl text-sm font-semibold hover:bg-white transition"
                     >
                         <FiDownload />
                         Export
@@ -134,21 +134,23 @@ const DashboardOverview = () => {
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300"
+                     
+                        className="bg-[#1B1B1C] border border-zinc-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300"
                     >
 
                         {/* TOP */}
                         <div className="flex items-center justify-between">
-                            <div className="w-10 h-10 rounded-xl bg-[#0A65CC]/10 flex items-center justify-center text-[#0A65CC]">
+                           
+                            <div className="w-10 h-10 rounded-xl bg-[#E2E2E2]/10 flex items-center justify-center text-[#FFFFFF]">
                                 <stat.icon className="w-5 h-5" />
                             </div>
 
                             <div
                                 className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold ${stat.isNeutral
-                                    ? "bg-gray-100 text-gray-400"
+                                    ? "bg-zinc-800 text-zinc-400"
                                     : stat.isPositive
-                                        ? "bg-emerald-50 text-emerald-600"
-                                        : "bg-rose-50 text-rose-600"
+                                        ? "bg-[#22C55E]/10 text-[#22C55E]"
+                                        : "bg-rose-500/10 text-rose-400"
                                     }`}
                             >
                                 {stat.isPositive && !stat.isNeutral && (
@@ -161,10 +163,12 @@ const DashboardOverview = () => {
 
                         {/* TEXT */}
                         <div className="mt-3">
-                            <p className="text-xs text-gray-400 uppercase tracking-wider">
+                          
+                            <p className="text-xs text-[#C4C7C8] uppercase tracking-wider">
                                 {stat.title}
                             </p>
-                            <h2 className="text-2xl font-bold text-gray-900">
+                         
+                            <h2 className="text-2xl font-bold text-[#E5E2E3]">
                                 {stat.value}
                             </h2>
                         </div>
@@ -183,24 +187,28 @@ const DashboardOverview = () => {
                                         >
                                             <stop
                                                 offset="5%"
-                                                stopColor="#0A65CC"
-                                                stopOpacity={0.4}
+                                                stopColor="#E5E2E3"
+                                                stopOpacity={0.2}
                                             />
                                             <stop
                                                 offset="95%"
-                                                stopColor="#0A65CC"
+                                                stopColor="#E5E2E3"
                                                 stopOpacity={0}
                                             />
                                         </linearGradient>
                                     </defs>
 
-                                    <Tooltip />
+                                    <Tooltip 
+                                        contentStyle={{ backgroundColor: '#1B1B1C', borderColor: '#zinc-800', borderRadius: '8px' }}
+                                        labelStyle={{ color: '#C4C7C8' }}
+                                        itemStyle={{ color: '#E5E2E3' }}
+                                    />
 
                                     <Area
                                         type="monotone"
                                         dataKey="value"
-                                        stroke="#0A65CC"
-                                        strokeWidth={2.5}
+                                        stroke="#E5E2E3"
+                                        strokeWidth={2}
                                         fill={`url(#color-${index})`}
                                         fillOpacity={1}
                                     />
@@ -212,11 +220,14 @@ const DashboardOverview = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
                 <JobPostsByCategory />
                 <NewUser />
             </div>
-            <SubscriptionTransactions />
+            <div className="mt-8">
+                <SubscriptionTransactions />
+            </div>
         </div>
     );
 };
