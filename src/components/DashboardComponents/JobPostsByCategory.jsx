@@ -43,11 +43,11 @@ const JobPostsByCategory = () => {
         </div>
       </div>
 
-      <div className="w-full h-[280px]">
+      <div className="w-full h-80">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={categoryData}
-            margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
           >
             <CartesianGrid
               strokeDasharray="3 3"
