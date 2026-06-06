@@ -1,5 +1,6 @@
 'use client'
 import DashboardNavBar from '@/components/DashboardComponents/DashboardNavBar';
+import PremiumAlertBanner from '@/components/DashboardComponents/PremiumAllertBanner';
 import { useState } from 'react';
 import { FiEye, FiEdit, FiTrash2 } from 'react-icons/fi';
 
@@ -106,27 +107,16 @@ export default function JobsPage() {
                                     {/* ACTIONS */}
                                     <div className="md:w-[10%] flex md:justify-end gap-2 text-gray-400">
 
-                                        <button
-                                            className="p-2 rounded-lg hover:bg-[#0A65CC]/10 hover:text-[#0A65CC] transition cursor-pointer
-                                            opacity-70 group-hover:opacity-100"
-                                            title="View"
-                                        >
+                                        <button className="p-2 rounded-lg hover:bg-[#0A65CC]/10 hover:text-[#0A65CC] transition cursor-pointer  opacity-70 group-hover:opacity-100" title="View">
                                             <FiEye size={16} />
                                         </button>
 
-                                        <button
-                                            className="p-2 rounded-lg hover:bg-[#0A65CC]/10 hover:text-[#0A65CC] transition cursor-pointer
-                                            opacity-70 group-hover:opacity-100"
-                                            title="Edit"
-                                        >
+                                        <button className="p-2 rounded-lg hover:bg-[#0A65CC]/10 hover:text-[#0A65CC] transition cursor-pointer opacity-70 group-hover:opacity-100"
+                                            title="Edit">
                                             <FiEdit size={16} />
                                         </button>
 
-                                        <button
-                                            className="p-2 rounded-lg hover:bg-rose-50 hover:text-rose-500 transition cursor-pointer
-                                            opacity-70 group-hover:opacity-100"
-                                            title="Delete"
-                                        >
+                                        <button className="p-2 rounded-lg hover:bg-rose-50 hover:text-rose-500 transition cursor-pointer opacity-70 group-hover:opacity-100" title="Delete">
                                             <FiTrash2 size={16} />
                                         </button>
 
@@ -140,6 +130,8 @@ export default function JobsPage() {
 
                 </div>
             </div>
+
+            <PremiumAlertBanner />
         </div>
     );
 }
