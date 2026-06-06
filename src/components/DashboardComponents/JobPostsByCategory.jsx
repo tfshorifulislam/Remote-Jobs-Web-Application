@@ -80,8 +80,8 @@ const JobPostsByCategory = () => {
             <Bar
               dataKey="posts"
               fill="#0A65CC"
-              radius={[6, 6, 0, 0]}
-              maxBarSize={100}
+              radius={[0, 0, 0, 0]}
+              maxBarSize={60}
             />
           </BarChart>
         </ResponsiveContainer>
