@@ -25,8 +25,8 @@ export function DashboardSidebar() {
         { icon: House, href: "/dashboard/recruiter", label: "Dashboard" },
         { icon: Magnifier, href: "/dashboard/recruiter/jobs", label: "Jobs" },
         { icon: Bell, href: "/dashboard/recruiter/jobs/new", label: "Post a Job" },
-        // { icon: Briefcase, href: "/dashboard/recruiter/company", label: "Company" },
-        { icon: Envelope, href: "/messages", label: "Messages" },
+        { icon: Briefcase, href: "/dashboard/recruiter/company", label: "Company" },
+        // { icon: Envelope, href: "/messages", label: "Messages" },
         { icon: Person, href: "/dashboard/recruiter/recruiterProfile", label: "Profile" },
         { icon: Gear, href: "/settings", label: "Settings" },
     ];
@@ -41,21 +41,21 @@ export function DashboardSidebar() {
         <div className="flex h-full flex-col">
             {/* User Card */}
             <div
-                className="mb-8 rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
+                className="mb-8 rounded-3xl  bg-[#474746] p-4 shadow-sm">
                 <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0A65CC] text-lg font-bold text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-lg font-bold text-[#0B0B14]">
                         {isPending ? "..." : userInitial}
                     </div>
 
                     <div className="min-w-0 flex-1">
                         {isPending ? (
-                            <div className="h-5 w-28 animate-pulse rounded bg-zinc-200" />
+                            <div className="h-5 w-28 animate-pulse rounded bg-[#474746]" />
                         ) : (
-                            <h2 className="truncate text-sm font-semibold text-zinc-900">
+                            <h2 className="truncate text-sm font-semibold text-[#C4C7C8]">
                                 {user?.name}
                             </h2>
                         )}
-                        <p className="text-xs text-zinc-500">Recruiter</p>
+                        <p className="text-xs text-[#C4C7C8]">Recruiter</p>
                     </div>
                 </div>
             </div>
@@ -78,18 +78,17 @@ export function DashboardSidebar() {
                             key={item.href}
                             href={item.href}
                             className={`group relative flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all ${active
-                                ? "bg-[#0A65CC]/10 text-[#0A65CC] "
-                                : "text-zinc-600 hover:bg-white hover:text-zinc-900"
+                                ? "bg-[#474746] text-[#B7B5B4] "
+                                : "text-[#C4C7C8] hover:bg-white/20"
                                 }`}
                         >
 
                             {active && (
-                                <div className="absolute right-0 top-0 h-full w-0.75 rounded-lg bg-[#0A65CC]" />
+                                <div className="absolute right-0 top-0 h-full w-0.75  bg-white" />
                             )}
 
-                            <Icon className={`size-5 ${active ? "text-[#0A65CC]" : "text-zinc-400 group-hover:text-zinc-600"}`} />
+                            <Icon className={`size-5 ${active ? "text-[#B7B5B4]" : "text-[#C4C7C8]group-hover:text-zinc-600"}`} />
                             <span>{item.label}</span>
-                            {active && <div className="ml-auto h-2 w-2 rounded-full bg-[#0A65CC]" />}
                         </Link>
                     );
                 })}
@@ -98,7 +97,7 @@ export function DashboardSidebar() {
             {/* Pro Card */}
             <div
                 className="mt-auto pt-6">
-                <div className="rounded-3xl bg-gradient-to-br from-[#0A65CC] to-[#084EA3] p-5 text-white shadow">
+                <div className="rounded-3xl bg-[#474746] p-5 text-white shadow">
                     <div className="flex items-center gap-3">
                         <div className="h-11 w-11 rounded-2xl bg-white/20 flex items-center justify-center">
                             <Briefcase className="size-5" />
@@ -108,7 +107,7 @@ export function DashboardSidebar() {
                             <p className="text-xs text-blue-100">Advanced hiring tools</p>
                         </div>
                     </div>
-                    <button className="mt-5 w-full rounded-2xl bg-white py-2.5 text-sm font-semibold text-[#0A65CC] hover:bg-zinc-100 transition">
+                    <button className="mt-5 w-full rounded-2xl bg-white py-2.5 text-sm font-semibold text-[#0B0B14] hover:bg-zinc-100 transition">
                         Upgrade Now
                     </button>
                 </div>
@@ -119,7 +118,7 @@ export function DashboardSidebar() {
     return (
         <>
             <aside
-                className="hidden lg:flex h-screen w-72 shrink-0 border-r border-zinc-200 bg-[#F8FAFC] p-5 flex-col">
+                className="hidden lg:flex h-screen w-72 shrink-0 border-r border-zinc-200 bg-[#0B0B14] p-5 flex-col">
                 {navContent}
             </aside>
         </>
