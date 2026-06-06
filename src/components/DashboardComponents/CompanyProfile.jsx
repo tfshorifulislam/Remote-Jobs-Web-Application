@@ -34,7 +34,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
         if (!validate(formData)) return;
 
         const companyData = {
-            name: formData.get("name"),
+            recruiterName: formData.get("name"),
             websiteUrl: formData.get("websiteUrl"),
             industry: formData.get("industry"),
             location: formData.get("location"),
@@ -46,6 +46,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
 
         setCompany(companyData);
         setIsEditing(false);
+        console.log(companyData)
     }
 
     async function handleLogoUpload(e) {

@@ -73,12 +73,16 @@ export function DashboardSidebar() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all ${
-                                active
-                                    ? "bg-[#0A65CC]/10 text-[#0A65CC]"
+                            className={`group relative flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all ${active
+                                    ? "bg-[#0A65CC]/10 text-[#0A65CC] "
                                     : "text-zinc-600 hover:bg-white hover:text-zinc-900"
-                            }`}
+                                }`}
                         >
+
+                            {active && (
+                                <div className="absolute right-0 top-0 h-full w-0.75 rounded-lg bg-[#0A65CC]" />
+                            )}
+
                             <Icon className={`size-5 ${active ? "text-[#0A65CC]" : "text-zinc-400 group-hover:text-zinc-600"}`} />
                             <span>{item.label}</span>
                             {active && <div className="ml-auto h-2 w-2 rounded-full bg-[#0A65CC]" />}
