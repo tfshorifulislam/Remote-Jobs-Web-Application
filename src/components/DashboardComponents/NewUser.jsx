@@ -40,7 +40,7 @@ export default function NewUser() {
   }
 
   return (
-    <div className="w-full mt-8 bg-white border border-gray-100 rounded-2xl p-6 shadow-xs">
+    <div className="w-full mt-8 bg-white border border-gray-100 rounded-2xl p-3 sm:p-6 shadow-xs">
       
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
