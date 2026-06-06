@@ -34,7 +34,7 @@ export default function SubscriptionTransactions() {
     };
 
     return (
-        <div className="w-full mt-8 bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
+        <div  className="w-full mt-8 bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
 
             {/* HEADER */}
             <div className="flex justify-between mb-5">
