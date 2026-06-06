@@ -1,114 +1,93 @@
-import React, { useState } from 'react';
+"use client";
 
-// Expanded Mock data to demonstrate pagination functioning properly across pages
-const transactionsData = [
-    // Page 1 Items (from image_01bde5.png)
+import React, { useState } from "react";
+
+const TRANSACTIONS_DATA = [
     { id: '#TXN-902341', user: 'marcus.k@techcorp.io', company: 'TechCorp Inc.', initials: 'MK', planType: 'Enterprise Monthly', amount: '$1,299.00', date: 'Oct 24, 2023, 14:20', status: 'Success' },
     { id: '#TXN-882103', user: 'sarah.l@creativestudio.com', company: 'Creative Studio', initials: 'SL', planType: 'Professional Annual', amount: '$499.00', date: 'Oct 24, 2023, 11:05', status: 'Success' },
     { id: '#TXN-774129', user: 'j.doe@freelance.org', company: 'Independent', initials: 'JD', planType: 'Starter Monthly', amount: '$49.00', date: 'Oct 23, 2023, 16:45', status: 'Pending' },
     { id: '#TXN-552014', user: 'admin@retailglobal.net', company: 'Retail Global', initials: 'AR', planType: 'Enterprise Monthly', amount: '$1,299.00', date: 'Oct 23, 2023, 09:12', status: 'Failed' },
-    
-    // Page 2 Items
     { id: '#TXN-441092', user: 'alex.m@devstack.io', company: 'DevStack Tech', initials: 'AM', planType: 'Professional Annual', amount: '$499.00', date: 'Oct 22, 2023, 18:30', status: 'Success' },
     { id: '#TXN-339821', user: 'emily.w@designco.com', company: 'DesignCo Labs', initials: 'EW', planType: 'Starter Monthly', amount: '$49.00', date: 'Oct 22, 2023, 15:10', status: 'Success' },
     { id: '#TXN-228104', user: 'brian.t@logistics.net', company: 'Global Logistics', initials: 'BT', planType: 'Enterprise Monthly', amount: '$1,299.00', date: 'Oct 21, 2023, 11:15', status: 'Pending' },
     { id: '#TXN-117293', user: 'clara.p@fintech.org', company: 'FinTech Secure', initials: 'CP', planType: 'Professional Annual', amount: '$499.00', date: 'Oct 21, 2023, 08:45', status: 'Success' },
-    
-    // Page 3 Items
     { id: '#TXN-005192', user: 'david.k@cloudscale.io', company: 'CloudScale Inc.', initials: 'DK', planType: 'Starter Monthly', amount: '$49.00', date: 'Oct 20, 2023, 17:05', status: 'Success' },
     { id: '#TXN-994182', user: 'fiona.g@marketing.com', company: 'Growth Marketing', initials: 'FG', planType: 'Enterprise Monthly', amount: '$1,299.00', date: 'Oct 20, 2023, 13:22', status: 'Failed' }
 ];
 
-const SubscriptionTransactions = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 4;
-    const totalPages = 3;
+const ITEMS_PER_PAGE = 4;
 
-    // Calculate indexes for slicing data dynamically
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentTransactions = transactionsData.slice(indexOfFirstItem, indexOfLastItem);
+export default function SubscriptionTransactions() {
+    const [page, setPage] = useState(1);
 
-    // Navigation handlers
-    const handlePageChange = (pageNumber) => {
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
-            setCurrentPage(pageNumber);
-        }
+    const totalPages = Math.ceil(TRANSACTIONS_DATA.length / ITEMS_PER_PAGE);
+    const start = (page - 1) * ITEMS_PER_PAGE;
+
+    const currentData = TRANSACTIONS_DATA.slice(start, start + ITEMS_PER_PAGE);
+
+    const getStatus = (status) => {
+        if (status === "Success")
+            return "text-green-600";
+        if (status === "Pending")
+            return "text-yellow-600";
+        return "text-red-600";
     };
 
     return (
-        <div className="bg-white mt-8 text-gray-900 p-6 rounded-xl border border-gray-200 shadow-sm mx-auto font-sans">
-            {/* Header Section */}
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold tracking-wide text-gray-900">Recent Subscription Transactions</h2>
-                <a href="#activity" className="text-xs text-gray-500 hover:text-gray-900 font-medium transition-colors duration-200">
-                    View All Activity
-                </a>
+        <div className="w-full mt-8 bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
+
+            {/* HEADER */}
+            <div className="flex justify-between mb-5">
+                <h2 className="font-semibold text-sm sm:text-lg text-gray-900">
+                    Recent Subscription Transactions
+                </h2>
             </div>
 
-            {/* Table Layout */}
-            <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+            {/* TABLE */}
+            <div className="hidden md:block">
+                <table className="w-full table-fixed">
                     <thead>
-                        <tr className="border-b border-gray-200 text-[10px] tracking-wider text-gray-400 uppercase font-semibold">
-                            <th className="py-3 px-4">User/Recruiter</th>
-                            <th className="py-3 px-4">Plan Type</th>
-                            <th className="py-3 px-4">Transaction ID</th>
-                            <th className="py-3 px-4">Amount</th>
-                            <th className="py-3 px-4">Date</th>
-                            <th className="py-3 px-4">Status</th>
+                        <tr className="text-xs text-gray-400 border-b">
+                            <th className="w-[35%] text-left py-2">User</th>
+                            <th className="w-[20%] text-left">Plan</th>
+                            <th className="w-[15%] text-left">Amount</th>
+                            <th className="w-[20%] text-left">Date</th>
+                            <th className="w-[10%] text-left">Status</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
-                        {currentTransactions.map((tx, idx) => (
-                            <tr key={idx} className="hover:bg-gray-50/70 transition-colors duration-150">
-                                {/* User Info */}
-                                <td className="py-4 px-4 flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs text-gray-600 font-semibold uppercase border border-gray-200">
+
+                    <tbody>
+                        {currentData.map((tx) => (
+                            <tr key={tx.id} className="border-b">
+                                <td className="py-3 flex gap-2 min-w-0">
+                                    <div className="w-8 h-8 rounded-full bg-[#0A65CC]/10 text-[#0A65CC] flex items-center justify-center shrink-0 font-semibold">
                                         {tx.initials}
                                     </div>
-                                    <div>
-                                        <div className="text-sm font-medium text-gray-800">{tx.user}</div>
-                                        <div className="text-xs text-gray-400">{tx.company}</div>
+
+                                    <div className="min-w-0">
+                                        <p className="truncate text-sm font-medium text-gray-900">
+                                            {tx.user}
+                                        </p>
+                                        <p className="truncate text-xs text-gray-500">
+                                            {tx.company}
+                                        </p>
                                     </div>
                                 </td>
 
-                                {/* Plan Type Badge */}
-                                <td className="py-4 px-4">
-                                    <span className="inline-block text-xs text-gray-600 bg-gray-50 px-3 py-1 rounded-full border border-gray-200 font-medium">
-                                        {tx.planType}
-                                    </span>
+                                <td className="text-xs text-gray-600 truncate">
+                                    {tx.planType}
                                 </td>
 
-                                {/* Transaction ID */}
-                                <td className="py-4 px-4 text-xs font-mono text-gray-400">
-                                    {tx.id}
-                                </td>
-
-                                {/* Amount */}
-                                <td className="py-4 px-4 text-sm font-bold tracking-tight text-gray-900">
+                                <td className="text-sm font-semibold text-gray-900 whitespace-nowrap">
                                     {tx.amount}
                                 </td>
 
-                                {/* Date */}
-                                <td className="py-4 px-4 text-xs text-gray-500">
+                                <td className="text-xs text-gray-500 whitespace-nowrap">
                                     {tx.date}
                                 </td>
 
-                                {/* Status Pillar */}
-                                <td className="py-4 px-4 text-xs font-semibold">
-                                    <div className="flex items-center gap-2">
-                                        <span className={`w-1.5 h-1.5 rounded-full ${
-                                            tx.status === 'Success' ? 'bg-emerald-500' :
-                                            tx.status === 'Pending' ? 'bg-amber-500' : 'bg-rose-500'
-                                        }`} />
-                                        <span className={
-                                            tx.status === 'Success' ? 'text-emerald-600' :
-                                            tx.status === 'Pending' ? 'text-amber-600' : 'text-rose-600'
-                                        }>
-                                            {tx.status}
-                                        </span>
-                                    </div>
+                                <td className={`text-xs font-semibold ${getStatus(tx.status)}`}>
+                                    {tx.status}
                                 </td>
                             </tr>
                         ))}
@@ -116,43 +95,73 @@ const SubscriptionTransactions = () => {
                 </table>
             </div>
 
-            {/* Pagination Controls */}
-            <div className="flex justify-center items-center gap-1.5 mt-6 pt-4 border-t border-gray-100">
-                {/* Previous Button */}
-                <button 
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent rounded-md transition duration-150 text-xs font-bold"
+            {/* MOBILE */}
+            <div className="md:hidden space-y-3">
+                {currentData.map((tx) => (
+                    <div key={tx.id} className="border rounded-lg p-3">
+
+                        <div className="flex justify-between">
+                            <div className="flex gap-2">
+                                <div className="w-8 h-8 rounded-full bg-[#0A65CC]/10 text-[#0A65CC] flex items-center justify-center font-semibold">
+                                    {tx.initials}
+                                </div>
+                            </div>
+
+                            <span className="font-semibold text-gray-900">
+                                {tx.amount}
+                            </span>
+                        </div>
+
+                        <div className="flex justify-between mt-2 text-xs">
+                            <span className="text-gray-600 truncate max-w-[60%]">
+                                {tx.user}
+                            </span>
+
+                            <span className={getStatus(tx.status)}>
+                                {tx.status}
+                            </span>
+                        </div>
+
+                        <div className="text-[10px] text-gray-400 mt-2">
+                            {tx.id} • {tx.date}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* PAGINATION */}
+            <div className="flex justify-center gap-2 mt-5 pt-3 border-t">
+                <button
+                    onClick={() => setPage(p => Math.max(p - 1, 1))}
+                    disabled={page === 1}
+                    className="px-2 text-[#0A65CC] disabled:opacity-40"
                 >
-                    &lt;
+                    ‹
                 </button>
 
-                {/* Page Numbers */}
-                {[1, 2, 3].map((pageNum) => (
+                {[...Array(totalPages)].map((_, i) => (
                     <button
-                        key={pageNum}
-                        onClick={() => handlePageChange(pageNum)}
-                        className={`px-3 py-1.5 text-xs font-semibold rounded-md transition duration-150 ${
-                            currentPage === pageNum
-                                ? 'bg-gray-900 text-white shadow-sm'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
+                        key={i}
+                        onClick={() => setPage(i + 1)}
+                        className={`px-3 py-1 text-xs rounded ${
+                            page === i + 1
+                                ? "bg-[#0A65CC] text-white"
+                                : "text-gray-600 hover:bg-[#0A65CC]/10"
                         }`}
                     >
-                        {pageNum}
+                        {i + 1}
                     </button>
                 ))}
 
-                {/* Next Button */}
-                <button 
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent rounded-md transition duration-150 text-xs font-bold"
+                <button
+                    onClick={() => setPage(p => Math.min(p + 1, totalPages))}
+                    disabled={page === totalPages}
+                    className="px-2 text-[#0A65CC] disabled:opacity-40"
                 >
-                    &gt;
+                    ›
                 </button>
             </div>
+
         </div>
     );
-};
-
-export default SubscriptionTransactions;
+}

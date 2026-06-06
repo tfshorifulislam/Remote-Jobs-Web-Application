@@ -99,7 +99,7 @@ const DashboardOverview = () => {
     ];
 
     return (
-        <div className="p-4 sm:p-6 md:p-8 w-full bg-gray-50/30">
+        <div className="p-4 sm:p-6  md:p-8 w-full bg-gray-50/30">
 
             {/* HEADER */}
             <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b pb-6 mb-8">
