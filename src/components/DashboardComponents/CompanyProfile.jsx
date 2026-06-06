@@ -46,7 +46,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
 
         setCompany(companyData);
         setIsEditing(false);
-        console.log(companyData)
+        console.log(companyData);
     }
 
     async function handleLogoUpload(e) {
@@ -77,17 +77,20 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
         }
     }
 
+    // COMMON INPUT STYLE FOR DARK THEME
+    const inputStyle = "w-full bg-zinc-800/40 border border-zinc-800 rounded-2xl px-5 py-3 text-[#E5E2E3] placeholder-zinc-500 focus:outline-none focus:bg-zinc-800/80 focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC] transition-all";
+
     // CREATE MODE
     if (!company) {
         return (
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <div className="mb-8">
-                    <Link href="/dashboard/recruiter" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-700">
+                    <Link href="/dashboard/recruiter" className="flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
                         <ArrowLeft size={18} /> Back to Dashboard
                     </Link>
                 </div>
 
-                <div className="bg-white border border-zinc-200 rounded-3xl shadow-sm p-6 md:p-10">
+                <div className="bg-[#1B1B1C] border border-zinc-800 rounded-3xl shadow-xl p-6 md:p-10">
                     <h2 className="text-3xl font-bold text-center md:text-left mb-8" style={{ color: PRIMARY }}>
                         Create Company Profile
                     </h2>
@@ -96,60 +99,60 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
                         <div className="grid md:grid-cols-2 gap-5">
                             {["name", "websiteUrl", "industry", "location"].map((field) => (
                                 <div key={field}>
-                                    <label className="block text-sm font-medium text-zinc-700 mb-1.5 capitalize">
+                                    <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5 capitalize">
                                         {field.replace(/([A-Z])/g, " $1")}
                                     </label>
                                     <input
                                         name={field}
                                         placeholder={`Enter ${field}`}
-                                        className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                        className={inputStyle}
                                     />
-                                    {errors[field] && <p className="text-red-500 text-sm mt-1">{errors[field]}</p>}
+                                    {errors[field] && <p className="text-rose-400 text-sm mt-1.5">{errors[field]}</p>}
                                 </div>
                             ))}
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1.5">Number of Employees</label>
+                                <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Number of Employees</label>
                                 <input
                                     name="employeeCount"
                                     type="text"
                                     placeholder="e.g. 50-100"
-                                    className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                    className={inputStyle}
                                 />
-                                {errors.employeeCount && <p className="text-red-500 text-sm mt-1">{errors.employeeCount}</p>}
+                                {errors.employeeCount && <p className="text-rose-400 text-sm mt-1.5">{errors.employeeCount}</p>}
                             </div>
                         </div>
 
                         {/* Logo Upload */}
                         <div>
-                            <label className="block text-sm font-medium text-zinc-700 mb-1.5">Company Logo</label>
+                            <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Company Logo</label>
                             <input
                                 type="file"
                                 accept="image/*"
                                 onChange={handleLogoUpload}
-                                className="w-full border border-zinc-200 rounded-2xl px-5 py-3 file:mr-4 file:py-2 file:px-6 file:rounded-xl file:border-0 file:bg-[#0A65CC] file:text-white"
+                                className="w-full bg-zinc-800/40 border border-zinc-800 rounded-2xl px-5 py-3 text-zinc-400 file:mr-4 file:py-1.5 file:px-5 file:rounded-xl file:border-0 file:bg-[#0A65CC] file:text-white file:font-medium file:cursor-pointer hover:file:brightness-110 file:transition-all"
                             />
-                            {errors.logo && <p className="text-red-500 text-sm mt-1">{errors.logo}</p>}
+                            {errors.logo && <p className="text-rose-400 text-sm mt-1.5">{errors.logo}</p>}
                             {logo && (
-                                <img src={logo} alt="logo" className="mt-4 w-28 h-28 object-cover rounded-2xl border" />
+                                <img src={logo} alt="logo" className="mt-4 w-28 h-28 object-cover rounded-2xl border border-zinc-800" />
                             )}
                         </div>
 
                         {/* Description */}
                         <div>
-                            <label className="block text-sm font-medium text-zinc-700 mb-1.5">Description</label>
+                            <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Description</label>
                             <textarea
                                 name="description"
                                 rows={6}
                                 placeholder="Tell us about your company..."
-                                className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                className={`${inputStyle} resize-none`}
                             />
-                            {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
+                            {errors.description && <p className="text-rose-400 text-sm mt-1.5">{errors.description}</p>}
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full md:w-auto px-10 py-3.5 rounded-2xl text-white font-semibold text-lg transition hover:brightness-105"
+                            className="w-full md:w-auto px-10 py-3.5 rounded-2xl text-white font-semibold text-lg transition hover:brightness-105 active:scale-[0.99] cursor-pointer"
                             style={{ backgroundColor: PRIMARY }}
                         >
                             Create Company Profile
@@ -164,56 +167,60 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
     if (isEditing) {
         return (
             <div className="max-w-4xl mx-auto px-4 py-8">
-                <div className="bg-white border border-zinc-200 rounded-3xl shadow-sm p-6 md:p-10">
+                <div className="bg-[#1B1B1C] border border-zinc-800 rounded-3xl shadow-xl p-6 md:p-10">
                     <h2 className="text-3xl font-bold mb-8" style={{ color: PRIMARY }}>Edit Company</h2>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        {/* Same fields as create but with default values */}
                         <div className="grid md:grid-cols-2 gap-5">
                             {["name", "websiteUrl", "industry", "location"].map((field) => (
                                 <div key={field}>
-                                    <label className="block text-sm font-medium text-zinc-700 mb-1.5 capitalize">{field.replace(/([A-Z])/g, " $1")}</label>
+                                    <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5 capitalize">{field.replace(/([A-Z])/g, " $1")}</label>
                                     <input
                                         name={field}
                                         defaultValue={company[field]}
-                                        className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                        className={inputStyle}
                                     />
-                                    {errors[field] && <p className="text-red-500 text-sm mt-1">{errors[field]}</p>}
+                                    {errors[field] && <p className="text-rose-400 text-sm mt-1.5">{errors[field]}</p>}
                                 </div>
                             ))}
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1.5">Number of Employees</label>
+                                <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Number of Employees</label>
                                 <input
                                     name="employeeCount"
                                     defaultValue={company.employeeCount}
-                                    className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                    className={inputStyle}
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-zinc-700 mb-1.5">Company Logo</label>
-                            <input type="file" accept="image/*" onChange={handleLogoUpload} className="w-full border border-zinc-200 rounded-2xl px-5 py-3 file:mr-4 file:py-2 file:px-6 file:rounded-xl file:border-0 file:bg-[#0A65CC] file:text-white" />
-                            {errors.logo && <p className="text-red-500 text-sm mt-1">{errors.logo}</p>}
-                            {logo && <img src={logo} className="mt-4 w-28 h-28 object-cover rounded-2xl border" />}
+                            <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Company Logo</label>
+                            <input 
+                                type="file" 
+                                accept="image/*" 
+                                onChange={handleLogoUpload} 
+                                className="w-full bg-zinc-800/40 border border-zinc-800 rounded-2xl px-5 py-3 text-zinc-400 file:mr-4 file:py-1.5 file:px-5 file:rounded-xl file:border-0 file:bg-[#0A65CC] file:text-white file:font-medium file:cursor-pointer hover:file:brightness-110 file:transition-all"
+                            />
+                            {errors.logo && <p className="text-rose-400 text-sm mt-1.5">{errors.logo}</p>}
+                            {logo && <img src={logo} className="mt-4 w-28 h-28 object-cover rounded-2xl border border-zinc-800" />}
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-zinc-700 mb-1.5">Description</label>
+                            <label className="block text-sm font-medium text-[#C4C7C8] mb-1.5">Description</label>
                             <textarea
                                 name="description"
                                 rows={6}
                                 defaultValue={company.description}
-                                className="w-full border border-zinc-200 rounded-2xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A65CC]/30 focus:border-[#0A65CC]"
+                                className={`${inputStyle} resize-none`}
                             />
-                            {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
+                            {errors.description && <p className="text-rose-400 text-sm mt-1.5">{errors.description}</p>}
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
                             <button
                                 type="submit"
-                                className="flex-1 py-3.5 rounded-2xl text-white font-semibold"
+                                className="flex-1 py-3.5 rounded-2xl text-white font-semibold transition hover:brightness-105 active:scale-[0.99] cursor-pointer"
                                 style={{ backgroundColor: PRIMARY }}
                             >
                                 Save Changes
@@ -221,7 +228,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
                             <button
                                 type="button"
                                 onClick={() => setIsEditing(false)}
-                                className="flex-1 py-3.5 border border-zinc-300 rounded-2xl font-medium hover:bg-zinc-50"
+                                className="flex-1 py-3.5 border border-zinc-800 rounded-2xl text-[#E5E2E3] font-medium bg-zinc-800/20 hover:bg-zinc-800/60 transition-colors cursor-pointer"
                             >
                                 Cancel
                             </button>
@@ -235,26 +242,25 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
     // VIEW MODE
     return (
         <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="bg-white border border-zinc-200 rounded-3xl shadow-sm overflow-hidden">
+            <div className="bg-[#1B1B1C] border border-zinc-800 rounded-3xl shadow-lg overflow-hidden">
                 {/* Header */}
-                <div className="p-6 md:p-10 border-b">
+                <div className="p-6 md:p-10 border-b border-zinc-800">
                     <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                         <div className="flex items-center gap-6">
-                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border border-zinc-100 flex-shrink-0">
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border border-zinc-800 flex-shrink-0 bg-zinc-900 flex items-center justify-center">
                                 {company.logo ? (
                                     <img src={company.logo} alt={company.name} className="w-full h-full object-cover" />
                                 ) : (
-                                    <div className="w-full h-full bg-zinc-100 flex items-center justify-center">
-                                        <Factory size={40} className="text-zinc-400" />
-                                    </div>
+                                    <Factory size={40} className="text-zinc-600" />
                                 )}
                             </div>
 
                             <div>
-                                <h1 className="text-3xl md:text-4xl font-bold text-zinc-900">{company.name}</h1>
+                                <h1 className="text-3xl md:text-4xl font-bold text-[#E5E2E3]">{company.name}</h1>
                                 <a
                                     href={company.websiteUrl}
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex items-center gap-2 text-[#0A65CC] hover:underline mt-2 text-lg"
                                 >
                                     <Globe size={18} />
@@ -265,7 +271,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
 
                         <button
                             onClick={() => setIsEditing(true)}
-                            className="flex items-center gap-2 px-6 py-3 rounded-2xl text-white font-medium hover:brightness-105 transition"
+                            className="flex items-center gap-2 px-6 py-3 rounded-2xl text-white font-medium hover:brightness-105 transition active:scale-[0.99] cursor-pointer"
                             style={{ backgroundColor: PRIMARY }}
                         >
                             <Pencil size={18} />
@@ -275,15 +281,15 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 md:p-10 bg-zinc-50">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 md:p-10 bg-zinc-900/40 border-b border-zinc-800">
                     {[
                         { label: "Industry", value: company.industry },
                         { label: "Location", value: company.location },
                         { label: "Company Size", value: company.employeeCount },
                     ].map((item) => (
-                        <div key={item.label} className="bg-white border rounded-2xl p-5">
+                        <div key={item.label} className="bg-[#1B1B1C] border border-zinc-800 rounded-2xl p-5">
                             <p className="text-zinc-500 text-sm">{item.label}</p>
-                            <p className="font-semibold text-xl mt-1">{item.value}</p>
+                            <p className="font-semibold text-xl text-[#E5E2E3] mt-1">{item.value}</p>
                         </div>
                     ))}
                 </div>
@@ -293,7 +299,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
                     <h3 className="text-xl font-semibold mb-4" style={{ color: PRIMARY }}>
                         About the Company
                     </h3>
-                    <p className="text-zinc-600 leading-relaxed text-[17px]">
+                    <p className="text-[#C4C7C8] leading-relaxed text-[17px] whitespace-pre-line">
                         {company.description}
                     </p>
                 </div>
