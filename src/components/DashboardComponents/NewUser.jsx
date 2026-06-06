@@ -23,19 +23,24 @@ const monthlyData = [
 
 export default function NewUser() {
   return (
-    <div className="w-full mt-8 bg-white border border-gray-100 rounded-2xl p-3 sm:p-6 shadow-xs">
+  
+    <div className="w-full mt-8 bg-[#1B1B1C] border border-zinc-800 rounded-2xl p-3 sm:p-6 shadow-xs">
+      
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h3 className="text-lg font-bold text-gray-900">
+        
+          <h3 className="text-lg font-bold text-[#E5E2E3]">
             New Users (30d)
           </h3>
-          <p className="text-xs text-gray-400 mt-0.5">
+        
+          <p className="text-xs text-[#C4C7C8] mt-0.5">
             User registration trajectory
           </p>
         </div>
 
-        <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-xl text-xs font-bold">
+       
+        <div className="bg-[#22C55E]/10 text-[#22C55E] px-3 py-1 rounded-xl text-xs font-bold">
           +2,410
         </div>
       </div>
@@ -55,58 +60,65 @@ export default function NewUser() {
                 x2="0"
                 y2="1"
               >
+             
                 <stop
                   offset="5%"
-                  stopColor="#0A65CC"
+                  stopColor="#E5E2E3"
                   stopOpacity={0.2}
                 />
                 <stop
                   offset="95%"
-                  stopColor="#0A65CC"
+                  stopColor="#E5E2E3"
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
 
+         
             <XAxis
               dataKey="day"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#9CA3AF", fontWeight: 500 }}
+              tick={{ fill: "#C4C7C8", fontWeight: 500, fontSize: 12 }}
               minTickGap={20}
             />
 
+          
             <Tooltip
               contentStyle={{
-                backgroundColor: "#fff",
-                border: "1px solid #E5E7EB",
+                backgroundColor: "#1B1B1C",
+                border: "1px solid #27272A",
                 borderRadius: "12px",
-                boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.05)",
+                boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.2)",
               }}
+              labelStyle={{ color: "#C4C7C8" }}
+              itemStyle={{ color: "#E5E2E3" }}
             />
 
+          
             <Area
               type="monotone"
               dataKey="users"
-              stroke="#0A65CC"
+              stroke="#E5E2E3"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#colorUsers)"
             />
 
+           
             <ReferenceDot
               x="Day 28"
               y={1450}
               r={5}
-              fill="#fff"
-              stroke="#0A65CC"
+              fill="#1B1B1C"
+              stroke="#E5E2E3"
               strokeWidth={3}
             />
           </AreaChart>
         </ResponsiveContainer>
 
-        {/* Peak Growth Label */}
-        <div className="absolute top-[16%] right-[18%] bg-gray-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm pointer-events-none z-10">
+   
+        <div className="absolute top-[16%] right-[18%] bg-zinc-800 border border-zinc-700 text-[#E5E2E3] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm pointer-events-none z-10">
           Peak Growth
         </div>
       </div>
