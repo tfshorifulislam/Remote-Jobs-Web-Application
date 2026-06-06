@@ -15,10 +15,12 @@ const categoryData = [
   { name: "Engineering", posts: 95 },
   { name: "Design", posts: 65 },
   { name: "Marketing", posts: 48 },
-  { name: "Programming", posts: 90 },
+  // { name: "Programming", posts: 90 },
   { name: "Sales", posts: 78 },
   { name: "Operations", posts: 32 },
 ];
+
+const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
 const JobPostsByCategory = () => {
   return (
@@ -57,7 +59,7 @@ const JobPostsByCategory = () => {
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#9CA3AF", fontWeight: 500 }}
+              tick={!isMobile}
             />
 
             <YAxis
@@ -79,7 +81,7 @@ const JobPostsByCategory = () => {
               dataKey="posts"
               fill="#0A65CC"
               radius={[6, 6, 0, 0]}
-              maxBarSize={45}
+              maxBarSize={100}
             />
           </BarChart>
         </ResponsiveContainer>
