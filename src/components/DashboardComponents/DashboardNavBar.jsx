@@ -46,7 +46,7 @@ const DashboardNavBar = () => {
 
 
     return (
-        <header className="w-full h-16 bg-white border-b border-gray-100 sticky top-0 z-50 flex items-center justify-between p-1 sm:px-8">
+        <header className="w-full h-16 bg-[#131314] sticky top-0 z-50 flex items-center justify-between p-1 sm:px-8">
 
 
             <div className="w-full max-w-xs sm:max-w-sm relative">
@@ -56,7 +56,7 @@ const DashboardNavBar = () => {
                 <input
                     type="text"
                     placeholder="Global search..."
-                    className="w-full bg-gray-50/60 border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0A65CC]/20 focus:border-[#0A65CC] transition-all placeholder:text-gray-400"
+                    className="w-full bg-[#1B1B1C] border border-gray-200/10 rounded-xl pl-10 pr-4 py-2 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0A65CC]/20 focus:border-[#0A65CC] transition-all placeholder:text-gray-400"
                 />
             </div>
 
@@ -64,13 +64,13 @@ const DashboardNavBar = () => {
             <div className="flex items-center gap-2 sm:gap-3.5">
 
 
-                <button className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition relative cursor-pointer">
+                <button className="p-2 text-[#C4C7C8] hover:text-gray-900 hover:bg-gray-50 rounded-xl transition relative cursor-pointer">
                     <FiBell className="w-5 h-5" />
                     <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white" />
                 </button>
 
 
-                <button className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition cursor-pointer">
+                <button className="p-2 text-[#C4C7C8] hover:text-gray-900 hover:bg-gray-50 rounded-xl transition cursor-pointer">
                     <FiHelpCircle className="w-5 h-5" />
                 </button>
 
@@ -84,7 +84,7 @@ const DashboardNavBar = () => {
                         className="flex items-center gap-2 focus:outline-none cursor-pointer group"
                     >
 
-                        <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#0A65CC] to-indigo-500 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-102 transition-transform">
+                        <div className="h-9 w-9 rounded-xl bg-white text-[#131314] flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-102 transition-transform">
                             {userInitial}
                         </div>
                     </button>
