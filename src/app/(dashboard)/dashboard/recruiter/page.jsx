@@ -1,9 +1,10 @@
+import DashboardOverview from '@/components/DashboardComponents/DashboardOverview';
 import React from 'react';
 
 const DashboardPage = () => {
     return (
         <div>
-            this is the dashboard page;
+            <DashboardOverview />
         </div>
     );
 };
