@@ -82,7 +82,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
         return (
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <div className="mb-8">
-                    <Link href="/dashboard/recruiter/company" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-700">
+                    <Link href="/dashboard/recruiter" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-700">
                         <ArrowLeft size={18} /> Back to Dashboard
                     </Link>
                 </div>
