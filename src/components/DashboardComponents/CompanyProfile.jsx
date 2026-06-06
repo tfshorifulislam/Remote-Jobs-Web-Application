@@ -233,7 +233,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
 
     // VIEW MODE
     return (
-        <div className="max-w-5xl mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="bg-white border border-zinc-200 rounded-3xl shadow-sm overflow-hidden">
                 {/* Header */}
                 <div className="p-6 md:p-10 border-b">
