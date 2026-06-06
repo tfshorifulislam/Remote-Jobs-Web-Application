@@ -10,7 +10,7 @@ const AsidebarDrawer = ({ navContent }) => {
 
     return (
         <>
-           
+
             <Button
                 className="lg:hidden fixed top-4 left-4 z-50 bg-white shadow-lg border border-zinc-200 rounded-2xl p-3 hover:bg-zinc-50 transition"
                 variant="secondary"
@@ -41,7 +41,9 @@ const AsidebarDrawer = ({ navContent }) => {
                             ✕
                         </button>
 
-                        <div className="p-5 h-full overflow-y-auto pt-16">
+                        <div
+                            className="p-5 h-full overflow-y-auto pt-16"
+                            onClick={() => setIsOpen(false)}>
                             {navContent}
                         </div>
                     </Drawer.Dialog>

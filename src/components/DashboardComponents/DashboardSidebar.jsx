@@ -117,7 +117,7 @@ export function DashboardSidebar() {
                 {navContent}
             </aside>
 
-            <AsidebarDrawer navContent={navContent} />
+            {/* <AsidebarDrawer navContent={navContent} /> */}
         </>
     );
 }
