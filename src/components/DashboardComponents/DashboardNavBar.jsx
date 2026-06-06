@@ -46,7 +46,7 @@ const DashboardNavBar = () => {
 
 
     return (
-        <header className="w-full h-16 bg-[#131314] sticky top-0 z-50 flex items-center justify-between p-1 sm:px-8">
+        <header className="w-full py-4 bg-[#131314] sticky top-0 z-50 flex items-center justify-between px-1 sm:px-8">
 
 
             <div className="w-full max-w-xs sm:max-w-sm relative">
