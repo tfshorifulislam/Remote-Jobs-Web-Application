@@ -46,7 +46,7 @@ const DashboardNavBar = () => {
 
 
     return (
-        <header className="w-full h-16 bg-white border-b border-gray-100 sticky top-0 z-50 px-4 sm:px-6 flex items-center justify-between">
+        <header className="w-full h-16 bg-white border-b border-gray-100 sticky top-0 z-50 flex items-center justify-between p-1 sm:px-8">
 
 
             <div className="w-full max-w-xs sm:max-w-sm relative">
@@ -100,7 +100,7 @@ const DashboardNavBar = () => {
 
 
                             {navItems.map((item) => {
-                                const Icon = item.icon
+                                const Icon = item.icon;
                                 return (
                                     <Link
                                         key={item.label}

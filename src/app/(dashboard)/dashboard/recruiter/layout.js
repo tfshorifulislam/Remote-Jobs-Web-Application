@@ -7,7 +7,7 @@ const DashboardLayout = ({ children }) => {
 
             {/* Sidebar */}
             <div className="
-                hidden sm:fixed sm:top-0 sm:left-0 sm:h-full sm:w-64 sm:block
+                hidden sm:fixed sm:top-0 sm:left-0 sm:h-full sm:w-64 sm:block z-9999
             ">
                 <DashboardSidebar />
             </div>
