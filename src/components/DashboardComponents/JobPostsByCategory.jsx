@@ -24,20 +24,24 @@ const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
 const JobPostsByCategory = () => {
   return (
-    <div className="w-full mt-8 bg-white border border-gray-100 rounded-2xl p-3 sm:p-6 shadow-xs">
+  
+    <div className="w-full mt-8 bg-[#1B1B1C] border border-zinc-800 rounded-2xl p-3 sm:p-6 shadow-xs">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-bold text-gray-900">
+        
+          <h3 className="text-lg font-bold text-[#E5E2E3]">
             Job Posts by Category
           </h3>
-          <p className="text-xs text-gray-400 mt-0.5">
+         
+          <p className="text-xs text-[#C4C7C8] mt-0.5">
             Distribution of current openings
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#0A65CC]" />
-          <span className="text-xs font-semibold text-gray-500">
+         
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E5E2E3]" />
+          <span className="text-xs font-semibold text-[#C4C7C8]">
             Active Listings
           </span>
         </div>
@@ -49,39 +53,45 @@ const JobPostsByCategory = () => {
             data={categoryData}
             margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
           >
+           
             <CartesianGrid
               strokeDasharray="3 3"
               vertical={false}
-              stroke="#F3F4F6"
+              stroke="#27272A" 
             />
 
+            
             <XAxis
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={!isMobile}
+              tick={!isMobile ? { fill: "#C4C7C8", fontSize: 10 } : false}
             />
 
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#9CA3AF" }}
+              tick={{ fill: "#C4C7C8", fontSize: 10 }}
             />
+
 
             <Tooltip
-              cursor={{ fill: "#F9FAFB" }}
+              cursor={{ fill: "rgba(255, 255, 255, 0.05)" }}
               contentStyle={{
-                backgroundColor: "#fff",
-                border: "1px solid #E5E7EB",
+                backgroundColor: "#1B1B1C",
+                border: "1px solid #27272A",
                 borderRadius: "12px",
               }}
+              labelStyle={{ color: "#C4C7C8" }}
+              itemStyle={{ color: "#E5E2E3" }}
             />
 
+           
             <Bar
               dataKey="posts"
-              fill="#0A65CC"
-              radius={[0, 0, 0, 0]}
-              maxBarSize={60}
+              fill="#ffffff33"
+              radius={[6, 6, 0, 0]}
+              maxBarSize={45}
             />
           </BarChart>
         </ResponsiveContainer>
@@ -90,4 +100,4 @@ const JobPostsByCategory = () => {
   );
 };
 
-export default JobPostsByCategory;
+export default JobPostsByCategory
