@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
-import AsidebarDrawer from "./AsidebarDrawer";
+
 
 export function DashboardSidebar() {
     const pathname = usePathname();
@@ -31,9 +31,10 @@ export function DashboardSidebar() {
         { icon: Gear, href: "/settings", label: "Settings" },
     ];
 
+    
+
     const isActive = (href) => {
-        if (href === "/dashboard/recruiter") return pathname === href;
-        return pathname?.startsWith(href);
+        return pathname === href;
     };
 
     const navContent = (
@@ -74,8 +75,8 @@ export function DashboardSidebar() {
                             key={item.href}
                             href={item.href}
                             className={`group relative flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all ${active
-                                    ? "bg-[#0A65CC]/10 text-[#0A65CC] "
-                                    : "text-zinc-600 hover:bg-white hover:text-zinc-900"
+                                ? "bg-[#0A65CC]/10 text-[#0A65CC] "
+                                : "text-zinc-600 hover:bg-white hover:text-zinc-900"
                                 }`}
                         >
 
