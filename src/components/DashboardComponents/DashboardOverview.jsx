@@ -21,6 +21,7 @@ import {
 } from "recharts";
 import JobPostsByCategory from "./JobPostsByCategory";
 import NewUser from "./NewUser";
+import SubscriptionTransactions from "./SubscriptionTransactions";
 
 const DashboardOverview = () => {
     const stats = [
@@ -215,6 +216,7 @@ const DashboardOverview = () => {
                 <JobPostsByCategory />
                 <NewUser />
             </div>
+            <SubscriptionTransactions />
         </div>
     );
 };
