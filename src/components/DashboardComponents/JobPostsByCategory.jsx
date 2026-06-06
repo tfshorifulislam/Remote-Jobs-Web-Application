@@ -20,7 +20,7 @@ const categoryData = [
 
 const JobPostsByCategory = () => {
   const [mounted, setMounted] = useState(false);
-  const [chartWidth, setChartWidth] = useState(500);
+  const [chartWidth, setChartWidth] = useState(950);
 
   // উইন্ডো সাইজ ট্র্যাক করে চার্টের উইডথ ডাইনামিক করার জন্য (ResponsiveContainer এর বিকল্প)
   useEffect(() => {
@@ -40,7 +40,7 @@ const JobPostsByCategory = () => {
   if (!mounted) return <div className="w-full h-[360px] bg-white rounded-2xl border border-gray-100 animate-pulse" />;
 
   return (
-    <div className="w-full bg-white border border-gray-100 rounded-2xl p-6 shadow-xs">
+    <div className="w-full mt-8 bg-white border border-gray-100 rounded-2xl p-6 shadow-xs">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-lg font-bold text-gray-900">Job Posts by Category</h3>

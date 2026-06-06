@@ -19,6 +19,8 @@ import {
     Area,
     Tooltip,
 } from "recharts";
+import JobPostsByCategory from "./JobPostsByCategory";
+import NewUser from "./NewUser";
 
 const DashboardOverview = () => {
     const stats = [
@@ -141,13 +143,12 @@ const DashboardOverview = () => {
                             </div>
 
                             <div
-                                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold ${
-                                    stat.isNeutral
-                                        ? "bg-gray-100 text-gray-400"
-                                        : stat.isPositive
+                                className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold ${stat.isNeutral
+                                    ? "bg-gray-100 text-gray-400"
+                                    : stat.isPositive
                                         ? "bg-emerald-50 text-emerald-600"
                                         : "bg-rose-50 text-rose-600"
-                                }`}
+                                    }`}
                             >
                                 {stat.isPositive && !stat.isNeutral && (
                                     <FiArrowUpRight />
@@ -208,6 +209,11 @@ const DashboardOverview = () => {
 
                     </div>
                 ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6">
+                <JobPostsByCategory />
+                <NewUser />
             </div>
         </div>
     );

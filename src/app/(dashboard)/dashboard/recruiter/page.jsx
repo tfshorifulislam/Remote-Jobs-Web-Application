@@ -9,10 +9,7 @@ const DashboardPage = () => {
         <div>
             <DashboardNavBar />
             <DashboardOverview />
-            <div className='flex gap-10 flex-col sm:flex-row'>
-                <JobPostsByCategory />
-                <NewUser />
-            </div>
+            
         </div>
     );
 };
