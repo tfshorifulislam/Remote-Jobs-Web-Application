@@ -25,29 +25,31 @@ export default function SubscriptionTransactions() {
 
     const currentData = TRANSACTIONS_DATA.slice(start, start + ITEMS_PER_PAGE);
 
+    // স্ট্যাটাস কালার হ্যান্ডলার (Success এর জন্য #22C55E)
     const getStatus = (status) => {
-        if (status === "Success")
-            return "text-green-600";
-        if (status === "Pending")
-            return "text-yellow-600";
-        return "text-red-600";
+        if (status === "Success") return "text-[#22C55E]";
+        if (status === "Pending") return "text-amber-500";
+        return "text-rose-500";
     };
 
     return (
-        <div  className="w-full mt-8 bg-white border border-gray-200 rounded-xl p-4 sm:p-6">
+        // ব্যাকগ্রাউন্ড #1B1B1C এবং বর্ডার মডিফাই করা হয়েছে
+        <div className="w-full mt-8 bg-[#1B1B1C] border border-zinc-800 rounded-xl p-4 sm:p-6🍎">
 
             {/* HEADER */}
             <div className="flex justify-between mb-5">
-                <h2 className="font-semibold text-sm sm:text-lg text-gray-900">
+                {/* টেক্সট কালার #E5E2E3 */}
+                <h2 className="font-semibold text-sm sm:text-lg text-[#E5E2E3]">
                     Recent Subscription Transactions
                 </h2>
             </div>
 
-            {/* TABLE */}
+            {/* DESKTOP TABLE */}
             <div className="hidden md:block">
                 <table className="w-full table-fixed">
                     <thead>
-                        <tr className="text-xs text-gray-400 border-b">
+                        {/* টেবিল হেডার বর্ডার এবং টেক্সট কালার #C4C7C8 */}
+                        <tr className="text-xs text-[#C4C7C8] border-b border-zinc-800">
                             <th className="w-[35%] text-left py-2">User</th>
                             <th className="w-[20%] text-left">Plan</th>
                             <th className="w-[15%] text-left">Amount</th>
@@ -58,31 +60,37 @@ export default function SubscriptionTransactions() {
 
                     <tbody>
                         {currentData.map((tx) => (
-                            <tr key={tx.id} className="border-b">
+                            <tr key={tx.id} className="border-b border-zinc-800/60 hover:bg-zinc-800/20 transition">
                                 <td className="py-3 flex gap-2 min-w-0">
-                                    <div className="w-8 h-8 rounded-full bg-[#0A65CC]/10 text-[#0A65CC] flex items-center justify-center shrink-0 font-semibold">
+                                    {/* ইনিশিয়ালস বা অ্যাভাটার ব্যাকগ্রাউন্ড #E2E2E2 এবং আইকন/টেক্সট #FFFFFF */}
+                                    <div className="w-8 h-8 rounded-full bg-[#E2E2E2]/10 text-[#FFFFFF] flex items-center justify-center shrink-0 text-xs font-semibold">
                                         {tx.initials}
                                     </div>
 
                                     <div className="min-w-0">
-                                        <p className="truncate text-sm font-medium text-gray-900">
+                                        {/* ইউজার নেম #E5E2E3 */}
+                                        <p className="truncate text-sm font-medium text-[#E5E2E3]">
                                             {tx.user}
                                         </p>
-                                        <p className="truncate text-xs text-gray-500">
+                                        {/* কোম্পানি নেম #C4C7C8 */}
+                                        <p className="truncate text-xs text-[#C4C7C8]">
                                             {tx.company}
                                         </p>
                                     </div>
                                 </td>
 
-                                <td className="text-xs text-gray-600 truncate">
+                                {/* প্ল্যান টাইপ #C4C7C8 */}
+                                <td className="text-xs text-[#C4C7C8] truncate pr-2">
                                     {tx.planType}
                                 </td>
 
-                                <td className="text-sm font-semibold text-gray-900 whitespace-nowrap">
+                                {/* অ্যামাউন্ট টেক্সট #E5E2E3 */}
+                                <td className="text-sm font-semibold text-[#E5E2E3] whitespace-nowrap">
                                     {tx.amount}
                                 </td>
 
-                                <td className="text-xs text-gray-500 whitespace-nowrap">
+                                {/* ডেট টেক্সট #C4C7C8 */}
+                                <td className="text-xs text-[#C4C7C8] whitespace-nowrap">
                                     {tx.date}
                                 </td>
 
@@ -95,25 +103,25 @@ export default function SubscriptionTransactions() {
                 </table>
             </div>
 
-            {/* MOBILE */}
+            {/* MOBILE LIST */}
             <div className="md:hidden space-y-3">
                 {currentData.map((tx) => (
-                    <div key={tx.id} className="border rounded-lg p-3">
+                    <div key={tx.id} className="border border-zinc-800 rounded-lg p-3 bg-zinc-800/10">
 
                         <div className="flex justify-between">
                             <div className="flex gap-2">
-                                <div className="w-8 h-8 rounded-full bg-[#0A65CC]/10 text-[#0A65CC] flex items-center justify-center font-semibold">
+                                <div className="w-8 h-8 rounded-full bg-[#E2E2E2]/10 text-[#FFFFFF] flex items-center justify-center font-semibold text-xs">
                                     {tx.initials}
                                 </div>
                             </div>
 
-                            <span className="font-semibold text-gray-900">
+                            <span className="font-semibold text-[#E5E2E3]">
                                 {tx.amount}
                             </span>
                         </div>
 
                         <div className="flex justify-between mt-2 text-xs">
-                            <span className="text-gray-600 truncate max-w-[60%]">
+                            <span className="text-[#C4C7C8] truncate max-w-[60%]">
                                 {tx.user}
                             </span>
 
@@ -122,7 +130,7 @@ export default function SubscriptionTransactions() {
                             </span>
                         </div>
 
-                        <div className="text-[10px] text-gray-400 mt-2">
+                        <div className="text-[10px] text-[#C4C7C8]/60 mt-2">
                             {tx.id} • {tx.date}
                         </div>
                     </div>
@@ -130,11 +138,12 @@ export default function SubscriptionTransactions() {
             </div>
 
             {/* PAGINATION */}
-            <div className="flex justify-center gap-2 mt-5 pt-3 border-t">
+            <div className="flex justify-center items-center gap-2 mt-5 pt-3 border-t border-zinc-800">
                 <button
                     onClick={() => setPage(p => Math.max(p - 1, 1))}
                     disabled={page === 1}
-                    className="px-2 text-[#0A65CC] disabled:opacity-40"
+                    // অ্যাক্টিভ কালার হিসেবে টেক্সট এবং বর্ডার গাইডলাইন মেলানো হয়েছে
+                    className="px-2 py-1 text-[#E5E2E3] disabled:opacity-30 text-lg line-none"
                 >
                     ‹
                 </button>
@@ -143,11 +152,10 @@ export default function SubscriptionTransactions() {
                     <button
                         key={i}
                         onClick={() => setPage(i + 1)}
-                        className={`px-3 py-1 text-xs rounded ${
-                            page === i + 1
-                                ? "bg-[#0A65CC] text-white"
-                                : "text-gray-600 hover:bg-[#0A65CC]/10"
-                        }`}
+                        className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${page === i + 1
+                                ? "bg-[#E5E2E3] text-[#1B1B1C]"
+                                : "text-[#C4C7C8] hover:bg-zinc-800"
+                            }`}
                     >
                         {i + 1}
                     </button>
@@ -156,7 +164,7 @@ export default function SubscriptionTransactions() {
                 <button
                     onClick={() => setPage(p => Math.min(p + 1, totalPages))}
                     disabled={page === totalPages}
-                    className="px-2 text-[#0A65CC] disabled:opacity-40"
+                    className="px-2 py-1 text-[#E5E2E3] disabled:opacity-30 text-lg line-none"
                 >
                     ›
                 </button>
